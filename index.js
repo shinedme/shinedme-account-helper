@@ -13,7 +13,7 @@ const { ApiPromise, WsProvider, Keyring } = require('@polkadot/api');
 
 cryptoWaitReady().then(async () => {
     let keyring = new Keyring({ type: 'sr25519' })
-    const wsProvider = new WsProvider();
+    const wsProvider = new WsProvider(process.env.BLOCKCHAIN_URL || 'ws://localhost:9944');
     const api = await ApiPromise.create({
         provider: wsProvider, types: {
             // mapping the actual specified address format
@@ -54,6 +54,5 @@ cryptoWaitReady().then(async () => {
         }
     })
     app.get('/', (req, res) => res.send('Hello World!'))
-    app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
-
+    app.listen(port)
 })
