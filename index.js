@@ -3,7 +3,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 app.use(bodyParser.json())
-const port = 3000
+const port = 4000
 
 const { cryptoWaitReady } = require('@polkadot/util-crypto');
 const { ApiPromise, WsProvider, Keyring } = require('@polkadot/api');
